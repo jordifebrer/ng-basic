@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+</head>
+<body ng-app="testApp" ng-controller="mainController">
+
+<h1>ng-repeat</h1>
+<h2>just a simple ecommerce directive</h2>
+
+<div ng-repeat="item in items track by $index">
+  <h3>{{item.title}}</h3>
+  <span>{{item.price | currency}}</span>
+  <p>{{item.description}}</p>
+  <button ng-click="duplicate($index)">Duplicate item</button>
+  <button ng-click="remove($index)">Remove item</button>
+  <hr>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script>
+
+var app = angular.module('testApp', []);
+
+app.controller('mainController', function($scope) {
+  $scope.items = [
+    {
+      title: 'title1',
+      price: 12,
+      description: "Some description 1.."
+    },
+    {
+      title: 'title2',
+      price: 30,
+      description: "Some description 2.."
+    }
+  ];
+  $scope.duplicate = function(index) {
+    $scope.items.push($scope.items[index]);
+  }
+  $scope.remove = function(index) {
+    $scope.items.splice(index, 1);
+  }
+});
+
+</script>
+</body>
+</html>

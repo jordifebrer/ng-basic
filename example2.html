@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+</head>
+<body ng-app="testApp" ng-controller="mainController">
+
+<h1>ng-bind</h1>
+<h2>just a test with 'double' with a duplicate preview</h2>
+
+<input ng-model="sometext">
+<p ng-bind="energeticText"></p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script>
+
+var app = angular.module('testApp', []);
+
+app.controller('mainController', function($scope) {
+  $scope.sometext = "";
+  $scope.energeticText = "";
+  $scope.$watch('sometext', function() {
+    $scope.energeticText = $scope.sometext + $scope.sometext;
+  });
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+</head>
+<body ng-app="testApp" ng-controller="mainController">
+
+<h1>ng-bind - with an object</h1>
+<h2>just a test with a previewed object</h2>
+
+<input ng-model="sometext"><br><br>
+<b>New value</b>: <span ng-bind="out.newValue"></span><br>
+<b>Old value</b>: <span ng-bind="out.oldValue"></span><br>
+<b>Duplicate value</b>: <span ng-bind="out.duplicateValue"></span>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script>
+
+var app = angular.module('testApp', []);
+
+app.controller('mainController', function($scope) {
+  $scope.sometext = "";
+  $scope.$watch('sometext', function(newValue, oldValue) {
+    $scope.out = {
+      newValue: newValue,
+      oldValue: oldValue,
+      duplicateValue: newValue + newValue
+    } 
+  });
+});
+
+</script>
+</body>
+</html>

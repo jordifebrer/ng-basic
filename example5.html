@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+</head>
+<body ng-app="testApp" ng-controller="mainController">
+
+<h1>$location</h1>
+<h2>just a test with $location</h2>
+
+<b>Actual URL</b>: <span ng-bind="out"></span>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script>
+
+var app = angular.module('testApp', []);
+
+app.controller('mainController', function($scope, $location) {
+  $scope.out = $location.absUrl();
+});
+
+</script>
+</body>
+</html>

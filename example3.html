@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+</head>
+<body ng-app="testApp" ng-controller="mainController">
+
+<h1>$watch - new & old values</h1>
+<h2>just a test with a 'lazy' preview</h2>
+
+<input ng-model="sometext">
+<p ng-bind="energeticText"></p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script>
+
+var app = angular.module('testApp', []);
+
+app.controller('mainController', function($scope) {
+  $scope.sometext = "";
+  $scope.energeticText = "";
+  $scope.$watch('sometext', function(newValue, oldValue) {
+    $scope.energeticText = oldValue;
+  });
+});
+
+</script>
+</body>
+</html>
